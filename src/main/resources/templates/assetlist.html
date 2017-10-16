@@ -19,6 +19,8 @@
 					<th>Category</th>
 					<th>Purchase Date</th>
 					<th>Cost</th>
+					<th>View</th>
+					<th>Edit</th>
 				</tr>
 				<tr th:each="asset : ${assets}">
 					<td th:text="${asset.id}"></td>
@@ -27,6 +29,8 @@
 					<td th:text="${asset.category}"></td>
 					<td th:text="${asset.purchaseDate}"></td>
 					<td th:text="${asset.cost}"></td>
+					<td><a th:href="${ '/asset/' + asset.id}">View</a></td>
+					<td><a th:href="${'/asset/edit/' + asset.id}">Edit</a></td>
 				</tr>
 			</table>
 

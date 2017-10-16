@@ -12,4 +12,19 @@ public interface AssetService {
 
 	void deleteAsset(Integer id);
 
+	/**
+	 * Checks if a given asset exists
+	 * 
+	 * @param asset
+	 * @return
+	 */
+	boolean exists(Asset asset);
+
+	/**
+	 * Takes a given asset it and copies the details from the form
+	 * 
+	 * @param asset
+	 */
+	void updateAsset(Asset asset);
+
 }

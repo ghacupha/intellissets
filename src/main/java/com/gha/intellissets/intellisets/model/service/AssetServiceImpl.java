@@ -21,7 +21,7 @@ public class AssetServiceImpl implements AssetService {
 	@Override
 	public void addAsset(Asset asset) {
 		
-		log.debug("Saving a new asset : {} ", asset);
+		log.info("Saving a new asset : {} ", asset);
 
 		assetRepository.save(asset);
 	}
@@ -39,7 +39,7 @@ public class AssetServiceImpl implements AssetService {
 	@Override
 	public List<Asset> findAll(){
 		
-		log.debug("Fetcing the assets list");
+		log.info("Fetcing the assets list");
 		
 		return (List<Asset>) assetRepository.findAll();
 	}
@@ -47,8 +47,28 @@ public class AssetServiceImpl implements AssetService {
 	@Override
 	public void deleteAsset(Integer id) {
 		
+		log.info("Deleting asset id # : {}", id);
+		
 		assetRepository.deleteById(id);
 	}
-	
-	
+
+
+	@Override
+	public boolean exists(Asset asset) {
+		
+		log.info("Checking if asset id # : {} exists...",asset.getId());
+		
+		return assetRepository.existsById(asset.getId());
+	}
+
+	@Override
+	public void updateAsset(Asset asset) {
+		
+		log.info("Updating asset id # : {}",asset.getId());
+
+		Asset inbound = asset;
+		Asset existing = assetRepository.findById(inbound.getId()).get();
+		if(existing != null) inbound.setId(existing.getId());
+		assetRepository.save(inbound);
+	}
 }

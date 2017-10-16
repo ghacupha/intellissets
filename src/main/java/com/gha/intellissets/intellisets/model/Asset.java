@@ -207,6 +207,11 @@ public class Asset {
 		return "Asset [id=" + id + ", description=" + description + ", department=" + department + ", category="
 				+ category + ", purchaseDate=" + purchaseDate + ", cost=" + cost + "]";
 	}
+
+	public void setId(int id2) {
+
+		id = id2;
+	}
 	
 	
 

@@ -34,7 +34,16 @@ public class AssetController {
 	@RequestMapping(value="asset", method=RequestMethod.POST)
 	public String saveAsset(Asset asset) {
 		
+		// we update existing asset if it exists
+		if(assetService.exists(asset)) {
+			
+			assetService.updateAsset(asset);
+			
+		} else {
+			
 		assetService.addAsset(asset);
+		
+		}
 		
 		return "redirect:/asset/"+asset.getId();
 	}
