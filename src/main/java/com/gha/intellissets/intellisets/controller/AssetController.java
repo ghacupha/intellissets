@@ -31,7 +31,7 @@ public class AssetController {
 		return "assetlist";
 	}
 	
-	@RequestMapping("asset/new")
+	@RequestMapping("/asset/new")
 	public String newAsset(Model model) {
 		
 		model.addAttribute("asset", new Asset());
@@ -39,7 +39,7 @@ public class AssetController {
 		return "assetform";
 	}
 	
-	@RequestMapping(value="asset", method=RequestMethod.POST)
+	@RequestMapping(value="/asset", method=RequestMethod.POST)
 	public String saveAsset(Asset asset) {
 		
 		// we update existing asset if it exists
@@ -56,7 +56,7 @@ public class AssetController {
 		return "redirect:/asset/"+asset.getId();
 	}
 	
-	@RequestMapping("asset/edit/{id}")
+	@RequestMapping("/asset/edit/{id}")
 	public String edit(@PathVariable Integer id, Model model){
 		
 	    model.addAttribute("asset", assetService.findById(id));
@@ -64,7 +64,7 @@ public class AssetController {
 	    return "assetform";
 	}
 	
-    @RequestMapping("asset/{id}")
+    @RequestMapping("/asset/{id}")
     public String showAsset(@PathVariable Integer id, Model model){
     	
         model.addAttribute("asset", assetService.findById(id));
@@ -72,10 +72,13 @@ public class AssetController {
         return "assetshow";
     }
     
-    @RequestMapping("asset/delete/{id}")
-    public String delete(@PathVariable Integer id){
+    @RequestMapping("/asset/delete/{id}")
+    public String delete(@PathVariable Integer id,Model model){
     	
         assetService.deleteAsset(id);
+        
+        // testing if this will hack
+        model.addAttribute("assets", assetService.findAll());
         
         return "redirect:/assets";
     }

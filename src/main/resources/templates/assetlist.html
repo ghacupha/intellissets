@@ -21,6 +21,7 @@
 					<th>Cost</th>
 					<th>View</th>
 					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 				<tr th:each="asset : ${assets}">
 					<td th:text="${asset.id}"></td>
@@ -31,6 +32,7 @@
 					<td th:text="${asset.cost}"></td>
 					<td><a th:href="${ '/asset/' + asset.id}">View</a></td>
 					<td><a th:href="${'/asset/edit/' + asset.id}">Edit</a></td>
+					<td><a th:href="${'/asset/delete/' + asset.id}">Delete</a></td>
 				</tr>
 			</table>
 
