@@ -16,7 +16,15 @@ public class AssetController {
 	@Autowired private AssetService assetService;
 	
 	@RequestMapping("/")
-	public String assetList(Model model) {
+	public String startPage(Model model) {
+		
+		model.addAttribute("assets",assetService.findAll());
+		
+		return "index";
+	}
+	
+	@RequestMapping("/assets")
+	public String showAssets(Model model) {
 		
 		model.addAttribute("assets",assetService.findAll());
 		
@@ -69,7 +77,7 @@ public class AssetController {
     	
         assetService.deleteAsset(id);
         
-        return "redirect:/";
+        return "redirect:/assets";
     }
 
 }
