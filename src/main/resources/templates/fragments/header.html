@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intellisets</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div th:fragment="header">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+						<ul class="nav navbar-nav">
+							<li><a href="#" th:href="@{/}">Assets</a></li>
+							<li><a href="#" th:href="@{/asset/new}">New Asset</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</nav>
+
+			<div class="jumbotron">
+				<div class="row text-center">
+					<div class="">
+						<h2>Intellissets</h2>
+
+						<h3>Asset Manager Web</h3>
+					</div>
+				</div>
+				<div class="row text-center">
+					<img src="../../static/images/Asset-Manager.jpg" width="400"
+						th:src="@{/images/Asset-Manager.jpg}" />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

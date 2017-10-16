@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Intellisets</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div th:if="${not #lists.isEmpty(assets)}">
+			<h2>Asset List</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Description</th>
+					<th>Department</th>
+					<th>Category</th>
+					<th>Purchase Date</th>
+					<th>Cost</th>
+				</tr>
+				<tr th:each="asset : ${assets}">
+					<td th:text="${asset.id}"></td>
+					<td th:text="${asset.description}"></td>
+					<td th:text="${asset.department}"></td>
+					<td th:text="${asset.category}"></td>
+					<td th:text="${asset.purchaseDate}"></td>
+					<td th:text="${asset.cost}"></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>
