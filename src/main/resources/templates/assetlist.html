@@ -14,7 +14,8 @@
 <!-- # the License. -->
 <!-- #------------------------------------------------------------------------------- -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
 <title>Intellissets</title>
@@ -25,7 +26,7 @@
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 		<div th:if="${not #lists.isEmpty(assets)}">
-			<h2>Asset List</h2>
+			<div class="col-sm-10"><h2>Asset Listing</h2></div>
 			<table class="table table-striped">
 				<tr>
 					<th>Id</th>
@@ -34,9 +35,9 @@
 					<th>Category</th>
 					<th>Purchase Date</th>
 					<th>Cost</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th sec:authorize="hasAnyAuthority('USER','ADMIN')">View</th>
+					<th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+					<th sec:authorize="hasAuthority('ADMIN')">Delete</th>
 				</tr>
 				<tr th:each="asset : ${assets}">
 					<td th:text="${asset.id}"></td>
@@ -45,9 +46,12 @@
 					<td th:text="${asset.category}"></td>
 					<td th:text="${asset.purchaseDate}"></td>
 					<td th:text="${asset.cost}"></td>
-					<td><a th:href="${ '/asset/' + asset.id}">View</a></td>
-					<td><a th:href="${'/asset/edit/' + asset.id}">Edit</a></td>
-					<td><a th:href="${'/asset/delete/' + asset.id}">Delete</a></td>
+					<td sec:authorize="hasAnyAuthority('USER','ADMIN')"><a
+						th:href="${ '/asset/' + asset.id}">View</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="${'/asset/edit/' + asset.id}">Edit</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="${'/asset/delete/' + asset.id}">Delete</a></td>
 				</tr>
 			</table>
 

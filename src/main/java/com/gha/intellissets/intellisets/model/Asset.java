@@ -17,17 +17,10 @@ package com.gha.intellissets.intellisets.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Asset {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Asset extends AbstractDomainClass {
 	
 	@NotNull
 	@Column
@@ -68,6 +61,7 @@ public class Asset {
 	 * 
 	 */
 	public Asset() {
+		super();
 	}
 
 	/**
@@ -143,7 +137,7 @@ public class Asset {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

@@ -14,7 +14,7 @@
 <!-- # the License. -->
 <!-- #------------------------------------------------------------------------------- -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
     <title>Intellissets</title>
@@ -25,51 +25,89 @@
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
-    <h2>Asset Details</h2>
-        <div>
-            <form class="form-horizontal" th:action="@{/asset/delete/asset.id}" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Asset Id:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.id}">Asset Id</p></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Description:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.description}">description</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Category:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.category}">description</p>
-                    </div>
-                </div>
-                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Department:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.department}">description</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Purchase Date:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.purchaseDate}">purchaseDate</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Price:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="${asset.cost}">Cost</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                		<button type="button" class="btn btn-danger">
-                			Delete
-                		</button>
-                </div>
-            </form>
-    </div>
+    <form class="form-horizontal" th:action="@{/logout}" method="post">
+<!--     	<div class="form-group"> -->
+<!--             <div class="col-sm-10"><h2>Asset Details</h2></div> -->
+<!--             <div class="col-sm-2" style="padding-top: 25px;"> -->
+<!--           <span sec:authorize="isAuthenticated()"> -->
+<!--               <input type="submit" value="Sign Out"/> -->
+<!--            </span> -->
+<!--             </div> -->
+<!--         </div> -->
+        <div class="col-sm-10"><h2>Asset Details</h2></div>
+    	<div class="form-group">
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">
+    					Asset Id:
+    				</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.id}">
+    						Asset Id
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">
+    					Description:
+    				</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.description}">
+    						description
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">
+    					Category:
+    				</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.category}">
+    						description
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">
+    					Department:
+    				</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.department}">
+    						description
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">
+    					Purchase Date:
+    				</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.purchaseDate}">
+    						purchaseDate
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">Price:</label>
+    				<div class="col-sm-10">
+    					<p class="form-control-static"
+    						th:text="${asset.cost}">
+    						Cost
+    					</p>
+    				</div>
+    			</div>
+    			<div class="form-group"
+    				sec:authorize="hasRole('ROLE_ADMIN')">
+    				<button type="button" class="btn btn-danger">
+    					Delete
+    				</button>
+    			</div>
+    	</div>
+    </form>
 </div>
 
 </body>
